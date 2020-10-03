@@ -1,0 +1,58 @@
+version: "3"
+
+volumes:
+  uploads:
+    external: true 
+
+services:
+
+  flask:
+    build: ./flask
+    container_name: flask
+    restart: always
+    environment:
+      - APP_NAME=portfolio
+      - FLASK_ENV=production
+      - SECRET_KEY=\xde\xc2\xba\xcb-\x90,\xb9\xde\x94\xb9TZ\xecq\xf3\x07\x8f-\xb2\n\xcc\x81\\
+      - SQLALCHEMY_DATABASE_URI=postgresql://postgres:1234@postgres:5432/users
+    expose:
+      - 8080
+    volumes:
+      - uploads:/portfolio/uploads
+
+  nginx:
+    image: nginx:1.15-alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./data/nginx:/etc/nginx/conf.d
+      - uploads:/portfolio/uploads
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    restart: unless-stopped
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+  postgres:
+    image: postgres
+    container_name: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=users
+    command: postgres -c listen_addresses='*'
+    volumes:
+      - ./data/postgres-data:/var/lib/postgresql/data
+
+
+

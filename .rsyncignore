@@ -1,0 +1,12 @@
+.vscode
+.rsyncignore
+flaskapp.code-workspace
+data/certbot
+data/postgres-data
+**/env
+**/__pycache__
+**/*.pyc
+uploads
+flask/uploads
+flask/portfolio/site.db
+**/migrations

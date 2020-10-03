@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class='content-section'>
+
+    <div class="row">
+        <div class="col">
+            <h1>Test</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">OXY</span>
+            </div>
+            <input type="number" id="OXY" value="188" autocomplete="on" class="form-control" placeholder="OXY" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="col input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">RLD</span>
+            </div>
+            <input type="number" id="RLD" value="109" autocomplete="on" class="form-control" placeholder="RLD" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+    </div>    
+    <div class="row">
+        <div class="col input-group mb-3">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="torpedo_1">Torpedo 1</label>
+            </div>
+            <select class="custom-select" id="torpedo_1">
+            <option selected value="0">G7e Acoustic Homing (Gold)</option>
+            <option value="1">Type 95 Oxygen (Gold)</option>
+            <option value="2">Mark 16 (Gold)</option>
+            <option value="3">G7a</option>
+            <option value="4">G7e Acoustic (Purple)</option>
+            <option value="5">Type 95 Oxygen (Purple)</option>
+            <option value="6">Type 92 Battery-powered</option>
+            <option value="7">Mark 16 (Purple)</option>
+            <option value="8">550mm 24V</option>
+            <option value="9">Mark 14</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            Torpedo 1 reload time: <output id="output"></output>s
+        </div>
+    </div>
+</div>
+
+<script>
+    var torpedo = {
+        reload: [13.3,  14.63,  24.61,  14.63,  14.63,  15.96,  15.96,  26.27,  15.3,   25.94]
+    };
+
+    const OXY = document.getElementById('OXY');
+    const RLD = document.getElementById('RLD');
+    const torpedo_1 = document.getElementById('torpedo_1');
+    const output = document.getElementById('output');
+
+
+    OXY.addEventListener('change', updateValue);
+    RLD.addEventListener('change', updateValue);
+    torpedo_1.addEventListener('change', updateValue)
+
+    
+    //
+
+    function updateValue(e) {
+        // output.textContent = parseInt(OXY.value) + parseInt(TRP.value) + parseInt(torpedo_1.value);
+        reload = torpedo.reload[parseInt(torpedo_1.value)] * Math.sqrt(200/(parseInt(RLD.value) + 100))
+        output.textContent = reload.toFixed(2);
+    }
+
+</script>
+
+{% endblock content %}

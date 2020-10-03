@@ -1,0 +1,9 @@
+{
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/env": true,
+        "**/*.pyc": true,
+        "**/migrations": true
+    },
+    "python.pythonPath": "flask/env/bin/python"
+}
