@@ -1,0 +1,8 @@
+data/certbot
+data/postgres-data
+**/env
+**/__pycache__
+**/*.pyc
+**/uploads
+**/site.db
+**/migrations
