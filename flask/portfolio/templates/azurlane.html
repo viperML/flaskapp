@@ -1,29 +1,72 @@
 {% extends "base.html" %}
+
+{% block head %}
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+{% endblock head %}
+
+
+
 {% block content %}
 
 <div class='content-section'>
 
     <div class="row">
-        <div class="col">
-            <h1>Test</h1>
+        <div class="col text-center">
+            <h1>Submarine Calculator</h1>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col text-center">
+            <h4>White-Value stats:</h4> 
         </div>
     </div>
     <div class="row">
-        <div class="col input-group mb-3">
+        <div class="col-sm input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">OXY</span>
             </div>
-            <input type="number" id="OXY" value="188" autocomplete="on" class="form-control" placeholder="OXY" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="number" id="OXY" class="form-control" value="188">
         </div>
-        <div class="col input-group mb-3">
+        <div class="col-sm input-group mb-3">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">RLD</span>
             </div>
-            <input type="number" id="RLD" value="109" autocomplete="on" class="form-control" placeholder="RLD" aria-label="Username" aria-describedby="basic-addon1">
+            <input type="number" id="RLD" class="form-control" value="109">
         </div>
-    </div>    
+    </div>
     <div class="row">
-        <div class="col input-group mb-3">
+        <div class="col-sm input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">TRP</span>
+            </div>
+            <input type="number" id="TRP" class="form-control" value="536">
+        </div>
+        <div class="col-sm input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">HIT</span>
+            </div>
+            <input type="number" id="HIT" class="form-control" value="183">
+        </div>
+        <div class="col-sm input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">LUCK</span>
+            </div>
+            <input type="number" id="LUCK" class="form-control" value="62">
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col text-center">
+            <h4>Torpedoes:</h4> 
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm input-group mb-3">
             <div class="input-group-prepend">
             <label class="input-group-text" for="torpedo_1">Torpedo 1</label>
             </div>
@@ -40,11 +83,81 @@
             <option value="9">Mark 14</option>
             </select>
         </div>
+        <div class="col-md-3 input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">EFF 1</span>
+            </div>
+            <input type="number" id="EFF1" class="form-control" value="130">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm input-group mb-3">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="torpedo_2">Torpedo 2</label>
+            </div>
+            <select class="custom-select" id="torpedo_2">
+            <option selected value="0">G7e Acoustic Homing (Gold)</option>
+            <option value="1">Type 95 Oxygen (Gold)</option>
+            <option value="2">Mark 16 (Gold)</option>
+            <option value="3">G7a</option>
+            <option value="4">G7e Acoustic (Purple)</option>
+            <option value="5">Type 95 Oxygen (Purple)</option>
+            <option value="6">Type 92 Battery-powered</option>
+            <option value="7">Mark 16 (Purple)</option>
+            <option value="8">550mm 24V</option>
+            <option value="9">Mark 14</option>
+            </select>
+        </div>
+        <div class="col-md-3 input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">EFF 2</span>
+            </div>
+            <input type="number" id="EFF2" class="form-control" value="130">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col text-center">
+            <h4>Auxiliary Equipment:</h4> 
+        </div>       
+    </div>
+    <div class="row">
+        <div class="col input-group mb-3">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="AUX_1">Aux 1</label>
+            </div>
+            <select class="custom-select" id="AUX_1">
+            <option selected value="0">Type 93 Pure Oxygen Torpedo</option>
+            <option value="1">Improved Snorkel</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col input-group mb-3">
+            <div class="input-group-prepend">
+            <label class="input-group-text" for="AUX_2">Aux 2</label>
+            </div>
+            <select class="custom-select" id="AUX_2">
+            <option selected value="0">Type 93 Pure Oxygen Torpedo</option>
+            <option value="1">Improved Snorkel</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col text-center">
+            <h4>Timings:</h4> 
+        </div>
     </div>
     <div class="row">
         <div class="col">
-            Torpedo 1 reload time: <output id="output"></output>s
+            Time submerged: <output id="time_submerged"></output>s <br>
+            Torpedo 1 reload: <output id="torpedo_reload_1"></output>s <br>
+            Torpedo 2 reload: <output id="torpedo_reload_2"></output>s <br>
         </div>
+    </div>
+    <div class="row">
+        <div class="col" id="plotDiv"></div>
     </div>
 </div>
 
@@ -52,25 +165,87 @@
     var torpedo = {
         reload: [13.3,  14.63,  24.61,  14.63,  14.63,  15.96,  15.96,  26.27,  15.3,   25.94]
     };
+    var aux ={
+        trp: [100,  0],
+        oxy: [0,    85]
+    }
 
     const OXY = document.getElementById('OXY');
     const RLD = document.getElementById('RLD');
+    const TRP = document.getElementById('TRP');
+    const HIT = document.getElementById('HIT');
+    const LUCK = document.getElementById('LUCK');
     const torpedo_1 = document.getElementById('torpedo_1');
-    const output = document.getElementById('output');
-
-
-    OXY.addEventListener('change', updateValue);
-    RLD.addEventListener('change', updateValue);
-    torpedo_1.addEventListener('change', updateValue)
-
+    const torpedo_2 = document.getElementById('torpedo_2');
+    const EFF1 = document.getElementById('EFF1');
+    const EFF2 = document.getElementById('EFF2');
+    const AUX_1 = document.getElementById('AUX_1');
+    const AUX_2 = document.getElementById('AUX_2');
     
-    //
+    const time_submerged = document.getElementById('time_submerged');
+    const torpedo_reload_1 = document.getElementById('torpedo_reload_1');
+    const torpedo_reload_2 = document.getElementById('torpedo_reload_2');
 
-    function updateValue(e) {
-        // output.textContent = parseInt(OXY.value) + parseInt(TRP.value) + parseInt(torpedo_1.value);
-        reload = torpedo.reload[parseInt(torpedo_1.value)] * Math.sqrt(200/(parseInt(RLD.value) + 100))
-        output.textContent = reload.toFixed(2);
+    plotDiv = document.getElementById('plotDiv');
+    var layout = {
+        showlegend: false,
+        yaxis: {visible: false},
+        xaxis: {tickmode: 'linear',
+                tick0: 0,
+                dtick: 1}
+    };
+
+
+    window.onload = function(e){
+        updateValue();
+        for (const button of document.querySelectorAll("input, select")) {
+            button.addEventListener('change', updateValue);
+        };
     }
+    
+    function updateValue(e) {
+        torpedo_reload_1.value = torpedo.reload[parseInt(torpedo_1.value)] * Math.sqrt(200/(parseInt(RLD.value) + 100));
+        torpedo_reload_2.value = torpedo.reload[parseInt(torpedo_2.value)] * Math.sqrt(200/(parseInt(RLD.value) + 100));
+        time_submerged.value = (parseInt(OXY.value) + aux.oxy[parseInt(AUX_1.value)] + aux.oxy[parseInt(AUX_2.value)])/10
+
+        var data_base = {
+            x: [0, 2.5],
+            y: [1, 1],
+            fill: 'tozeroy',
+            fillcolor: 'rgba(90,190,90,0.5)',
+            type: 'scatter',
+            mode: 'none'
+        }
+        var data_torpedo_reload_1 = {
+            x: [torpedo_reload_1.value, parseFloat(torpedo_reload_1.value)+2.5],
+            y: [1, 1],
+            fill: 'tozeroy',
+            fillcolor: 'rgba(90,90,190,0.5)',
+            type: 'scatter',
+            mode: 'none'
+        };
+        var data_torpedo_reload_2 = {
+            x: [torpedo_reload_2.value, parseFloat(torpedo_reload_2.value)+2.5],
+            y: [1, 1],
+            fill: 'tozeroy',
+            fillcolor: 'rgba(190,90,90,0.5)',
+            type: 'scatter',
+            mode: 'none'
+        };
+        var data_time_submerged = {
+            x: [0, time_submerged.value],
+            y: [-1, -1],
+            fill: 'tozeroy',
+            fillcolor: 'rgba(129,203,254,0.3)',
+            type: 'scatter',
+            mode: 'none'
+        };
+        var data = [data_base, data_torpedo_reload_1, data_torpedo_reload_2, data_time_submerged];
+        Plotly.newPlot(plotDiv, data, layout);
+    }
+
+
+
 
 </script>
 

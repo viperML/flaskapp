@@ -10,3 +10,4 @@ uploads
 flask/uploads
 flask/portfolio/site.db
 **/migrations
+.git
