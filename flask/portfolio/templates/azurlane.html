@@ -186,21 +186,6 @@
     const torpedo_reload_2 = document.getElementById('torpedo_reload_2');
 
     plotDiv = document.getElementById('plotDiv');
-    var layout = {
-        showlegend: false,
-        yaxis: {visible: false},
-        xaxis: {tickmode: 'linear',
-                tick0: 0,
-                dtick: 2},
-        margin: {l: 10,
-                 r: 10,
-                 t: 15,
-                 b: 15},
-        height: 200,
-        dragmode: false,
-        hovermode: false,
-        autosize: true
-    };
 
 
     window.onload = function(e){
@@ -250,6 +235,63 @@
             mode: 'none'
         };
         var data = [data_base, data_torpedo_reload_1, data_torpedo_reload_2, data_time_submerged];
+        var layout = {
+            showlegend: false,
+            yaxis: {visible: false},
+            xaxis: {tickmode: 'linear',
+                    tick0: 0,
+                    dtick: 2},
+            margin: {l: 10,
+                    r: 10,
+                    t: 15,
+                    b: 15},
+            height: 200,
+            dragmode: false,
+            hovermode: false,
+            autosize: true,
+            annotations: [
+                {
+                    x: (time_submerged.value/2),
+                    y: -0.5,
+                    xref: 'x',
+                    yref: 'y',
+                    text: 'Time submerged',
+                    showarrow: false,
+                },
+                {
+                    x: 1.25,
+                    y: (2/3),
+                    xref: 'x',
+                    yref: 'y',
+                    text: 'Torp1: #1',
+                    showarrow: false,
+                },
+                {
+                    x: 1.25,
+                    y: (1/3),
+                    xref: 'x',
+                    yref: 'y',
+                    text: 'Torp2: #1',
+                    showarrow: false,
+                },
+                {
+                    x: parseFloat(torpedo_reload_1.value)+1.25,
+                    y: (2/3),
+                    xref: 'x',
+                    yref: 'y',
+                    text: 'Torp1: #2',
+                    showarrow: false,
+                },
+                {
+                    x: parseFloat(torpedo_reload_2.value)+1.25,
+                    y: (1/3),
+                    xref: 'x',
+                    yref: 'y',
+                    text: 'Torp2: #2',
+                    showarrow: false,
+                }
+            ]
+        };
         Plotly.newPlot(plotDiv, data, layout, {staticPlot: true});
         window.onresize = function() {
             Plotly.relayout(plotDiv, {
