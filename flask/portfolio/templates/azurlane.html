@@ -211,9 +211,11 @@
     }
     
     function updateValue(e) {
+        // From Azur lane wiki
         torpedo_reload_1.value = torpedo.reload[parseInt(torpedo_1.value)] * Math.sqrt(200/(parseInt(RLD.value) + 100));
         torpedo_reload_2.value = torpedo.reload[parseInt(torpedo_2.value)] * Math.sqrt(200/(parseInt(RLD.value) + 100));
         time_submerged.value = (parseInt(OXY.value) + aux.oxy[parseInt(AUX_1.value)] + aux.oxy[parseInt(AUX_2.value)])/10
+        // 
 
         var data_base = {
             x: [0, 2.5],

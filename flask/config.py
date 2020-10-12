@@ -2,7 +2,9 @@ import os
 
 class Config(object):
     UPLOAD_EXTENSIONS = ['.png', '.jpg']
-    MAX_CONTENT_LENGTH = 100*1024*1024
+    MAX_CONTENT_LENGTH = 500*1024*1024
+    DROPZONE_MAX_FILE_SIZE = 500
+    DROPZONE_TIMEOUT = 10*60*1000
     UPLOADED_FILEHOST_DEST = 'uploads'
 
 class DevelopmentConfig(Config):
