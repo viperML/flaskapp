@@ -8,4 +8,4 @@ def azurlane():
 
 @bp_al.route('/azurlane/submarine')
 def submarine():
-    return render_template('azurlane_submarine.html', title='AL Submarines')
+    return render_template('azurlane_submarine.html', title='AL Submarine Calculator')
