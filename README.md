@@ -2,7 +2,7 @@
 
 - Personal project to build a personal web page.
 - Using the flask python framework.
-- Deployed using Docker containers with Nginx and PostgreSQL.
+- Deployed using Docker containers and systemd with Nginx and PostgreSQL.
 - TLS encryption
 - Currently hosted by Amazon Web Services at [viper.cafe](https://viper.cafe)
 
