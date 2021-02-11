@@ -8,7 +8,7 @@
 
 ## Requirements:
 - Ubuntu 18.04
-- Docker
+- Docker Compose
 
 ## To-Do:
 - [ ] Add content to the templates
@@ -19,4 +19,22 @@
 ```
 # systemctl enable /home/ubuntu/flaskapp/portfolio.service
 # systemctl restart portfolio.service
+```
+
+## Testing Environment
+```
+$ export FLASK_ENV=development
+$ cd flask
+$ source ./env/bin/activate
+$ python run.py
+```
+
+### Create local database for testing
+```
+$ export FLASK_ENV=development
+$ cd flask
+$ source ./env/bin/activate
+$ python manage.py db init
+$ python manage.py db migrate
+$ python manage.py db upgrade
 ```
