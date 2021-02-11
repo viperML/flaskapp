@@ -14,3 +14,9 @@
 - [ ] Add content to the templates
 - [ ] Implement CI/CD
 - [ ] Keep python dependencies updated
+
+## Deployment (for future reference)
+```
+# systemctl enable /home/ubuntu/flaskapp/portfolio.service
+# systemctl restart portfolio.service
+```
