@@ -1,4 +1,5 @@
 docker-compose.yml filter=git-crypt diff=git-crypt
 portfolio.service filter=git-crypt diff=git-crypt
+.secrets-env filter=git-crypt diff=git-crypt
 ubuntu-1804.code-workspace filter=git-crypt diff=git-crypt
 .gitattributes !filter !diff
