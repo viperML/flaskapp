@@ -14,6 +14,7 @@
 - [ ] Add content to the templates
 - [ ] Implement CI/CD
 - [ ] Keep python dependencies updated
+- [ ] Include creation of PostgreSQL DB in Readme 
 
 ## Deployment (for future reference)
 ```
