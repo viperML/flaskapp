@@ -8,7 +8,7 @@ User=ubuntu
 Group=docker
 ExecStartPre=/usr/local/bin/docker-compose -f /home/ubuntu/flaskapp/docker-compose.yml down -v
 # Start container when unit is started
-ExecStart=/usr/local/bin/docker-compose -f /home/ubuntu/flaskapp/docker-compose.yml up --force-recreate --no-deps --build flask
+ExecStart=/usr/local/bin/docker-compose -f /home/ubuntu/flaskapp/docker-compose.yml up --force-recreate --no-deps
 # Stop container when unit is stopped
 ExecStop=/usr/local/bin/docker-compose -f /home/ubuntu/flaskapp/docker-compose.yml down -v
 # Reload
