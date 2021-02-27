@@ -9,21 +9,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Test LS
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        USERNAME: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
-        KEY: ${{ secrets.SSHKEY }}
-        script: ls
     
-    - name: Git Fetch and Checkout
+    - name: Server deploy
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        script: cd flaskapp && git fetch --all && git checkout --force "origin/main"
+        script: sudo systemctl stop portfolio.service &&
+                cd flaskapp && 
+                git fetch --all && 
+                git checkout --force "origin/main"
+                sudo systemctl daemon-reload &&
+                sudo systemctl restart portfolio.service
