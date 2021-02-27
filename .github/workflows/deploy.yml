@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Executing remote command
+    - name: Test LS
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -18,3 +18,12 @@ jobs:
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
         script: ls
+    
+    - name: Git Fetch and Checkout
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        USERNAME: ${{ secrets.USERNAME }}
+        PORT: ${{ secrets.PORT }}
+        KEY: ${{ secrets.SSHKEY }}
+        script: git fetch --all && git checkout --force "origin/main"
