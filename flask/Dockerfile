@@ -1,4 +1,4 @@
-FROM python:3.8.5-buster
+FROM python:3.7.2-stretch
 
 # Dependecies before app files
 COPY requirements.txt /
