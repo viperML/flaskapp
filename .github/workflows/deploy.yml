@@ -26,4 +26,4 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PORT: ${{ secrets.PORT }}
         KEY: ${{ secrets.SSHKEY }}
-        script: git fetch --all && git checkout --force "origin/main"
+        script: cd flaskapp && git fetch --all && git checkout --force "origin/main"
