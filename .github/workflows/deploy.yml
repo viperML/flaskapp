@@ -20,6 +20,6 @@ jobs:
         script: sudo systemctl stop portfolio.service &&
                 cd flaskapp && 
                 git fetch --all && 
-                git checkout --force "origin/main"
+                git checkout --force "origin/main" &&
                 sudo systemctl daemon-reload &&
                 sudo systemctl restart portfolio.service
