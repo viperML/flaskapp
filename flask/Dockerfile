@@ -6,7 +6,6 @@ RUN pip install -r requirements.txt
 
 # App files
 WORKDIR /portfolio
-COPY . /portfolio
 
 # Run app
 CMD ["uwsgi", "app.ini"]

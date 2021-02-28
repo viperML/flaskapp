@@ -19,6 +19,7 @@ services:
       - 8080
     volumes:
       - uploads:/portfolio/uploads
+      - ./flask:/portfolio
 
   nginx:
     image: nginx:1.15-alpine
