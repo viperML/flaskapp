@@ -6,3 +6,4 @@ data/postgres-data
 **/uploads
 **/site.db
 **/migrations
+**/node_modules

@@ -1,7 +1,24 @@
 {% extends "base.html" %}
+
+{% block head %}
+<script src="https://cdn.jsdelivr.net/remarkable/1.7.1/remarkable.min.js"></script>
+{% endblock head %}
+
 {% block content %}
+
 <div class='content-section'>
-    <h1>Home Page</h1>
-    To do 😴
+    <div class="col" id="DATA">
+    </div>
 </div>
+
+<script>
+    var md = new Remarkable();
+    fetch("https://raw.githubusercontent.com/viperML/flaskapp/main/README.md")
+    .then((response) => response.text())
+    .then((html) => {
+        document.getElementById("DATA").innerHTML = md.render(html);
+    })
+    
+</script>
+
 {% endblock content %}

@@ -1,5 +1,5 @@
 body {
-  background: #212121;
+  background: #1b1b1b;
   color: #333333;
   margin-top: 5rem;
 }
@@ -22,7 +22,7 @@ header,
 }
 
 .navbar:not(.top-nav-collapse) {
-  background: transparent !important;
+  background: #212121 !important;
 }
 
 @media (max-width: 991px) {
@@ -68,6 +68,6 @@ h1, h2, h3, h4, h5, h6 {
   background: #ffffff;
   padding: 10px 20px;
   border: 1px solid #dddddd;
-  border-radius: 3px;
+  border-radius: 10px;
   margin-bottom: 20px;
 }
