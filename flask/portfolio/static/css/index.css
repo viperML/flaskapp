@@ -31,13 +31,6 @@ header,
   }
 }
 
-h1 {
-  letter-spacing: 8px;
-}
-
-h5 {
-  letter-spacing: 3px;
-}
 
 .hr-light {
   border-top: 3px solid #fff;
@@ -66,7 +59,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .content-section {
   background: #ffffff;
-  padding: 10px 20px;
+  padding: 15px 20px;
   border: 1px solid #dddddd;
   border-radius: 10px;
   margin-bottom: 20px;
